@@ -11,17 +11,19 @@ def main():
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
     koukaton = pg.image.load("fig/3.png")#こうかとんSurfaceの作成
-    koukaton = pg.transform.flip(koukaton,True,False)
+    koukaton = pg.transform.flip(koukaton,True,False)#左右反転
     tmr = 0
+    x = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [0, 0])
+        screen.blit(bg_img, [-x, 0])
         screen.blit(koukaton,[300,200])#こうかとんを描画
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        x += 1
+        clock.tick(200)
 
 
 if __name__ == "__main__":
