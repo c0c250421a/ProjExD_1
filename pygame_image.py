@@ -16,6 +16,8 @@ def main():
     koukaton_rect = koukaton.get_rect()#rectを取得
     koukaton_rect.center = 300,200#初期座標を設定
     tmr = 0
+    k_x = 0
+    k_y = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
@@ -30,15 +32,21 @@ def main():
         key_lst = pg.key.get_pressed()
 
         if not any(key_lst):
-            koukaton_rect.move_ip((-1, 0))
+            k_x = -1
+            k_y = 0#課題1
         if key_lst[pg.K_UP]:
-            koukaton_rect.move_ip((-1, -1))
+            k_x = -1
+            k_y = -1
         if key_lst[pg.K_DOWN]:
-            koukaton_rect.move_ip((-1, 1))
+            k_x = -1
+            k_y = 1
         if key_lst[pg.K_LEFT]:
-            koukaton_rect.move_ip((-2, 0))
+            k_x = -2
+            k_y = 0
         if key_lst[pg.K_RIGHT]:
-            koukaton_rect.move_ip((1, 0))
+            k_x = 1
+            k_y = 0
+        koukaton_rect.move_ip((k_x, k_y))#課題2
         pg.display.update()
         tmr += 1    
         clock.tick(200)#練習6
