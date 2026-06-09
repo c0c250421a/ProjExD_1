@@ -23,6 +23,8 @@ def main():
             if event.type == pg.QUIT: return
 
         x = tmr % 3200#5,9
+        k_x = 0
+        k_y = 0
 
         screen.blit(bg_img, [-x, 0])#動かす
         screen.blit(bgf_img,[-(x)+1600,0])#もう一枚
@@ -30,23 +32,20 @@ def main():
         screen.blit(koukaton,koukaton_rect)#こうかとんを描画
 
         key_lst = pg.key.get_pressed()
-
-        if not any(key_lst):
-            k_x = -1
-            k_y = 0#課題1
+        #課題1
         if key_lst[pg.K_UP]:
-            k_x = -1
+            k_x = 0
             k_y = -1
         if key_lst[pg.K_DOWN]:
-            k_x = -1
+            k_x = 0
             k_y = 1
         if key_lst[pg.K_LEFT]:
-            k_x = -2
+            k_x = -1
             k_y = 0
         if key_lst[pg.K_RIGHT]:
-            k_x = 1
+            k_x = 2
             k_y = 0
-        koukaton_rect.move_ip((k_x, k_y))#課題2
+        koukaton_rect.move_ip((k_x-1, k_y))#課題2
         pg.display.update()
         tmr += 1    
         clock.tick(200)#練習6
